@@ -1,0 +1,90 @@
+import stanford.karel.*;
+
+public class BlankKarel extends SuperKarel {
+	public void run() {
+		/* 1. go right 1
+		 * 2. check for beeper in center
+		 * 3. if beeper is not in center
+		 * 3.a. then check for other beepers to the top and bottom
+		 * 4. go back to the center
+		 * 5. turn east
+		 * 6. move to the next beeper */
+		
+		while (frontIsClear()) {
+		    // start -> move forward
+			
+			move();
+			
+			// check if beepers are present in middle voter slot
+			// if condition: beepers are NOT present
+			
+			if(!beepersPresent()) {
+				
+		   //then turn left, move, then check for beepers
+				
+				turnLeft();
+				move();
+				
+				sweepBeeper();
+				
+				move();
+				move();
+				
+				sweepBeeper();
+				
+				move();
+				turnRight();
+	      
+				}
+			
+		   }
+		
+		 victoryDance();
+		 
+		// Karel is happy because he defended digital democracy and fought for social justice
+		
+	}
+	
+	public void sweepBeeper() {
+		    
+		     // checks to see if beepers are present
+				
+		     if(beepersPresent()) {
+					
+			 // if  present-- then pick beeper up
+					
+		    	 pickBeeper();
+		    	 
+		     // preforms same check twice to see if two beepers are within the same space
+		    	 
+		    	 if(beepersPresent()) {
+		    		 
+		    		 pickBeeper();
+		    	 }
+			  
+		     }
+			  
+		  
+	       // turn around after beeper sweep  
+		
+		   turnAround();
+	}
+	
+	public void victoryDance() {
+		
+		// true or false value as control variable for while loop
+		
+		boolean k = true;
+		
+		while (k) {
+			
+		// Karel gets pretty sick of turning right
+			
+		 turnRight();
+		 
+		}
+	
+	}
+	
+	
+}
