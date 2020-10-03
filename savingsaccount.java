@@ -1,18 +1,19 @@
 package com.meritamerica.assignment1;
 
-public class CheckingAccount {
+public class SavingsAccount {
+	
 	private double balance;
-    private final double interestRate = .0001;
+    private final double interestRate = .01;
     private double futureValue;
     
-    public CheckingAccount() {
+    public SavingsAccount() {
     	
     	this.balance = 0;
 		this.futureValue = 0;
     }
 	
 	
-	public CheckingAccount(double openingBalance) {
+	public SavingsAccount(double openingBalance) {
 		
 		this.balance = openingBalance;
 		
@@ -63,8 +64,7 @@ public class CheckingAccount {
 	
     public double futureValue(int years) {
     	double PV = balance;
-    	double futureValue = PV*(Math.pow((interestRate + 1), years));
-    	this.futureValue = futureValue;
+		double futureValue = PV*(Math.pow((interestRate + 1), years));
     	return futureValue;
 		
 	}
@@ -72,10 +72,10 @@ public class CheckingAccount {
 	public String toString() {
 		
 		
-		String AccountHolder = String.format("Checking Account Balance: " + this.balance + "\nChecking Account Interest Rate: " + this.interestRate + "\nChecking Account Balance in Three Years: %.2f\n", futureValue(3));
+		String AccountHolder = String.format("Savings Account Balance: " + this.balance + "\nSaving Account Interest Rate: " + this.interestRate + "\nSaving Account Balance in Three Years: %.2f\n", futureValue(3));
 	    
 		return AccountHolder;
-	
-	}	 
+		
+	}
 	
 }
